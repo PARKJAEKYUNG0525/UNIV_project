@@ -76,16 +76,19 @@ document.addEventListener('DOMContentLoaded', function() {
       console.log("구글 로그인 URL:", googleAuthUrl);
       window.location.href = googleAuthUrl;
   });
+  
+  // 테스트 계정 생성
+  createTestAccount();
 });
 
 // 로그인 성공 후 처리 함수 (회원가입 또는 로그인 처리)
 function handleSocialLoginSuccess(userData) {
   // 회원가입 또는 로그인 처리 로직
   // 실제로는 서버에 요청을 보내 처리해야 함
-  localStorage.setItem('userData', JSON.stringify(userData));
+  localStorage.setItem('currentUser', JSON.stringify(userData));
   
   // 회원가입 성공 알림 및 메인 페이지로 이동
-  alert(`${userData.name}님, 환영합니다! 회원가입이 완료되었습니다.`);
+  alert(`${userData.name}님, 환영합니다! 로그인이 완료되었습니다.`);
   window.location.href = 'index.html';
 }
 
@@ -106,22 +109,110 @@ individualTerms.forEach(term => {
   });
 });
 
-// 폼 유효성 검사
+// 회원가입 폼 제출 이벤트 리스너
 document.querySelector('.signup-form').addEventListener('submit', function(e) {
   e.preventDefault();
   
-  // 주소 유효성 검사 추가
+  // 필수 입력 필드 값 가져오기
+  const email = document.querySelector('input[type="email"]').value;
+  const password = document.querySelector('input[type="password"]').value;
+  const passwordConfirm = document.querySelectorAll('input[type="password"]')[1].value;
+  const name = document.querySelector('input[placeholder="이름"]').value;
+  const phone = document.querySelector('input[type="tel"]').value;
   const zipcode = document.getElementById('zipcode').value;
   const address = document.getElementById('address').value;
   const addressDetail = document.getElementById('addressDetail').value;
   
+  // 필수 약관 동의 확인
+  const term1Checked = document.getElementById('term1').checked;
+  const term2Checked = document.getElementById('term2').checked;
+  const marketingConsent = document.getElementById('term3').checked;
+  
+  // 유효성 검사
+  let isValid = true;
+  
+  // 이메일 유효성 검사
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+      document.querySelector('input[type="email"]').parentElement.classList.add('error');
+      isValid = false;
+  } else {
+      document.querySelector('input[type="email"]').parentElement.classList.remove('error');
+  }
+  
+  // 비밀번호 유효성 검사
+  const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
+  if (!passwordRegex.test(password)) {
+      document.querySelector('input[type="password"]').parentElement.classList.add('error');
+      isValid = false;
+  } else {
+      document.querySelector('input[type="password"]').parentElement.classList.remove('error');
+  }
+  
+  // 비밀번호 확인
+  if (password !== passwordConfirm) {
+      document.querySelectorAll('input[type="password"]')[1].parentElement.classList.add('error');
+      isValid = false;
+  } else {
+      document.querySelectorAll('input[type="password"]')[1].parentElement.classList.remove('error');
+  }
+  
+  // 휴대폰 번호 유효성 검사
+  const phoneRegex = /^01[016789]\d{7,8}$/;
+  if (!phoneRegex.test(phone)) {
+      document.querySelector('input[type="tel"]').parentElement.classList.add('error');
+      isValid = false;
+  } else {
+      document.querySelector('input[type="tel"]').parentElement.classList.remove('error');
+  }
+  
+  // 주소 확인
   if (!zipcode || !address || !addressDetail) {
       alert('주소를 모두 입력해주세요.');
+      isValid = false;
+  }
+  
+  // 필수 약관 동의 확인
+  if (!term1Checked || !term2Checked) {
+      alert('필수 약관에 동의해주세요.');
+      isValid = false;
+  }
+  
+  if (!isValid) {
       return;
   }
   
-  // 개발 중 알림
-  alert('회원가입 기능은 현재 개발 중입니다.');
+  // 이메일 중복 확인 (로컬 스토리지에 저장된 사용자 정보 확인)
+  const users = JSON.parse(localStorage.getItem('users')) || [];
+  const isExistingUser = users.some(user => user.email === email);
+  
+  if (isExistingUser) {
+      alert('이미 가입된 이메일입니다. 다른 이메일을 사용해주세요.');
+      return;
+  }
+  
+  // 사용자 정보 객체 생성
+  const newUser = {
+      email,
+      password, // 실제 서비스에서는 암호화하여 저장해야 합니다.
+      name,
+      phone,
+      address: {
+          zipcode,
+          address,
+          addressDetail
+      },
+      marketingConsent,
+      joinDate: new Date().toISOString()
+  };
+  
+  // 사용자 정보 저장
+  users.push(newUser);
+  localStorage.setItem('users', JSON.stringify(users));
+  
+  // 회원가입 성공 메시지 및 로그인 페이지로 이동
+  alert(`${name}님, 환영합니다! 회원가입이 완료되었습니다.`);
+  window.location.href = 'login.html';
 });
 
 // 입력 필드 유효성 검사 (예시)
@@ -185,3 +276,61 @@ document.getElementById('search-zipcode').addEventListener('click', function() {
     }).open();
   }
 });
+
+// 로그인 체크 함수 (로그인 여부 확인)
+function checkLoginStatus() {
+  const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  return currentUser !== null;
+}
+
+// 로그아웃 함수
+function logout() {
+  localStorage.removeItem('currentUser');
+  window.location.href = 'index.html';
+}
+
+// 로그인 함수
+function login(email, password) {
+  const users = JSON.parse(localStorage.getItem('users')) || [];
+  const user = users.find(u => u.email === email && u.password === password);
+  
+  if (user) {
+      // 비밀번호는 제외하고 사용자 정보 저장
+      const { password, ...userWithoutPassword } = user;
+      localStorage.setItem('currentUser', JSON.stringify(userWithoutPassword));
+      return true;
+  }
+  
+  return false;
+}
+
+// 현재 로그인한 사용자 정보 가져오기
+function getCurrentUser() {
+  return JSON.parse(localStorage.getItem('currentUser'));
+}
+
+// 로컬 스토리지에 기본 사용자 계정 생성 (테스트용)
+function createTestAccount() {
+  const users = JSON.parse(localStorage.getItem('users')) || [];
+  
+  // 테스트 계정이 없는 경우에만 생성
+  if (!users.some(user => user.email === 'test@example.com')) {
+      const testUser = {
+          email: 'test@example.com',
+          password: 'Test1234!',
+          name: '테스트 사용자',
+          phone: '01012345678',
+          address: {
+              zipcode: '12345',
+              address: '서울시 테스트구 테스트동',
+              addressDetail: '123-456'
+          },
+          marketingConsent: true,
+          joinDate: new Date().toISOString()
+      };
+      
+      users.push(testUser);
+      localStorage.setItem('users', JSON.stringify(users));
+      console.log('테스트 계정이 생성되었습니다. 이메일: test@example.com, 비밀번호: Test1234!');
+  }
+}
