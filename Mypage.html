@@ -17,26 +17,20 @@
             <div class="profile-pic">👤</div>
             <h3>홍길동님</h3>
             <ul class="sidebar-menu">
-                <li><a href="#" class="active">내 정보</a></li>
-                <li><a href="#">예약 확인</a></li>
-                <li><a href="#">이용 내역</a></li>
-                <li><a href="#">리뷰 관리</a></li>
-                <li><a href="#">포인트</a></li>
+                <div class="tab active" onclick="switchTab('info')">내 정보</div>
+                <div class="tab" onclick="switchTab('reservations')">예약 확인</div>
+                <div class="tab" onclick="switchTab('history')">이용 내역</div>
+                <div class="tab" onclick="switchTab('reviews')">리뷰</div>
+                <div class="tab" onclick="switchTab('points')">포인트</div>
                 <li><a href="#">비밀번호 변경</a></li>
                 <li><a href="#">로그아웃</a></li>
             </ul>
         </div>
 
         <div class="content">
+            <br><br><br><br>
             <h2>마이페이지</h2>
-
-            <div class="tabs">
-                <div class="tab active" onclick="switchTab('info')">내 정보</div>
-                <div class="tab" onclick="switchTab('reservations')">예약 확인</div>
-                <div class="tab" onclick="switchTab('history')">이용 내역</div>
-                <div class="tab" onclick="switchTab('reviews')">리뷰</div>
-                <div class="tab" onclick="switchTab('points')">포인트</div>
-            </div>
+<br>
 
             <!-- 내 정보 탭 -->
             <div id="info" class="tab-content active">

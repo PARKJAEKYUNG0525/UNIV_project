@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>가사 서비스 파트너 지원하기</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        
+        .header {
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #0099ff;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 20px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        
+        .hero {
+            background: linear-gradient(to right, #0099ff, #66c2ff);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: white;
+            color: #0099ff;
+            padding: 12px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .benefits {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 50px;
+            color: #333;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .benefit-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        .benefit-icon {
+            width: 60px;
+            height: 60px;
+            background-color: #e6f5ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: #0099ff;
+            font-size: 24px;
+        }
+        
+        .benefit-card h3 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .benefit-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .how-it-works {
+            padding: 80px 0;
+            background-color: #f8f9fa;
+        }
+        
+        .steps {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .step {
+            flex-basis: 30%;
+            text-align: center;
+            position: relative;
+        }
+        
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background-color: #0099ff;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-weight: bold;
+        }
+        
+        .step h3 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .step p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .application-form {
+            background-color: white;
+            padding: 80px 0;
+        }
+        
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #333;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        textarea {
+            height: 120px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background-color: #0099ff;
+            color: white;
+            border: none;
+            padding: 14px 24px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: block;
+            width: 100%;
+            margin-top: 20px;
+        }
+        
+        .submit-btn:hover {
+            background-color: #007acc;
+        }
+        
+        .testimonials {
+            padding: 80px 0;
+            background-color: #f8f9fa;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+            object-fit: cover;
+            background-color: #e6f5ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0099ff;
+            font-weight: bold;
+        }
+        
+        .author-info h4 {
+            margin-bottom: 5px;
+            color: #333;
+        }
+        
+        .author-info p {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .faq {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+        }
+        
+        .faq-question {
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #333;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-answer {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .footer {
+            background-color: #333;
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #0099ff;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            color: #aaa;
+            font-size: 14px;
+        }
+        
+        @media (max-width: 768px) {
+            .steps {
+                flex-direction: column;
+            }
+            
+            .step {
+                margin-bottom: 30px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <div class="logo">클린홈</div>
+                <ul class="nav-links">
+                    <li><a href="#">서비스 소개</a></li>
+                    <li><a href="#">이용 방법</a></li>
+                    <li><a href="#">요금 안내</a></li>
+                    <li><a href="#">파트너 지원</a></li>
+                    <li><a href="#">로그인</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>클린홈 파트너로 함께해요</h1>
+            <p>나의 전문성을 살려 자유롭게 일하고 안정적인 수입을 만들어보세요. 클린홈과 함께라면 당신의 가사 서비스 전문성이 더 빛납니다.</p>
+            <a href="#application" class="btn">지금 지원하기</a>
+        </div>
+    </section>
+
+    <section class="benefits">
+        <div class="container">
+            <h2 class="section-title">클린홈 파트너의 특별한 혜택</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">💰</div>
+                    <h3>합리적인 수익</h3>
+                    <p>서비스 수수료 공제 후 서비스 대금의 80%를 파트너님께 지급합니다. 월 수입 300만원 이상도 가능합니다.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🕒</div>
+                    <h3>자유로운 시간 관리</h3>
+                    <p>원하는 시간에 원하는 지역에서 일할 수 있어요. 자신의 라이프스타일에 맞게 일정을 조정하세요.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🛡️</div>
+                    <h3>안전한 근무 환경</h3>
+                    <p>고객 정보 사전 확인 및 상해보험 제공으로 안전하게 일할 수 있는 환경을 제공합니다.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">📱</div>
+                    <h3>편리한 앱 시스템</h3>
+                    <p>예약부터 정산까지 모든 과정이 앱을 통해 간편하게 이루어집니다.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🔄</div>
+                    <h3>지속적인 일감</h3>
+                    <p>꾸준한 고객 유입으로 안정적인 일감을 제공합니다. 정기 고객 확보 기회도 있어요.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🎓</div>
+                    <h3>전문 교육 제공</h3>
+                    <p>서비스 품질 향상을 위한 정기적인 교육과 피드백을 제공합니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">지원 및 활동 과정</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>온라인 지원</h3>
+                    <p>아래 지원서를 작성하여 제출해주세요. 기본 정보와 경력 사항을 확인합니다.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>면접 및 교육</h3>
+                    <p>서류 합격 시 면접 후 기본 교육 과정을 수료합니다.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>활동 시작</h3>
+                    <p>앱을 통해 서비스를 선택하고 활동을 시작합니다. 매주 정산됩니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="application-form" id="application">
+        <div class="container">
+            <h2 class="section-title">파트너 지원하기</h2>
+            <form>
+                <div class="form-group">
+                    <label for="name">이름</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">연락처</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">이메일</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="address">거주지 주소</label>
+                    <input type="text" id="address" name="address" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="service-area">희망 활동 지역</label>
+                    <select id="service-area" name="service-area" required>
+                        <option value="">선택해주세요</option>
+                        <option value="서울">서울</option>
+                        <option value="경기">경기</option>
+                        <option value="인천">인천</option>
+                        <option value="부산">부산</option>
+                        <option value="대구">대구</option>
+                        <option value="대전">대전</option>
+                        <option value="광주">광주</option>
+                        <option value="기타">기타</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="experience">관련 경력 사항</label>
+                    <textarea id="experience" name="experience" placeholder="가사 도우미, 청소 등 관련 경력을 자세히 적어주세요."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="time-preference">희망 근무 시간</label>
+                    <select id="time-preference" name="time-preference" required>
+                        <option value="">선택해주세요</option>
+                        <option value="weekday-morning">평일 오전</option>
+                        <option value="weekday-afternoon">평일 오후</option>
+                        <option value="weekend">주말</option>
+                        <option value="flexible">유동적</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="how-know">클린홈을 알게 된 경로</label>
+                    <select id="how-know" name="how-know">
+                        <option value="">선택해주세요</option>
+                        <option value="internet">인터넷 검색</option>
+                        <option value="sns">SNS</option>
+                        <option value="friend">지인 소개</option>
+                        <option value="ad">광고</option>
+                        <option value="other">기타</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="submit-btn">지원서 제출하기</button>
+            </form>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">파트너님들의 생생한 후기</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"클린홈 파트너로 일한지 1년이 넘었어요. 제가 원하는 시간에 일할 수 있어서 아이를 키우면서도 부담 없이 일하고 있습니다. 정기적으로 찾아주시는 단골 고객님들도 생겨서 안정적인 수입을 얻고 있어요."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">김</div>
+                        <div class="author-info">
+                            <h4>김서연</h4>
+                            <p>경기도 파트너 / 1년 6개월 활동</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"처음엔 걱정이 많았는데, 앱 시스템이 너무 편리해서 일정 관리가 쉬워요. 교육도 체계적이라 자신감 있게 서비스를 제공할 수 있게 되었습니다. 무엇보다 고객님들의 만족스러운 반응이 저에게 큰 보람을 줍니다."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">이</div>
+                        <div class="author-info">
+                            <h4>이미영</h4>
+                            <p>서울 파트너 / 10개월 활동</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"은퇴 후 새로운 일을 찾고 있었는데, 클린홈 파트너로 활동하면서 제2의 인생을 시작했어요. 집안일에 자신 있었던 제 기술이 이렇게 인정받을 수 있어서 행복합니다. 지금은 월 수입도 꽤 안정적이에요."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">박</div>
+                        <div class="author-info">
+                            <h4>박정희</h4>
+                            <p>인천 파트너 / 2년 활동</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq">
+        <div class="container">
+            <h2 class="section-title">자주 묻는 질문</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>지원 자격은 어떻게 되나요?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        만 18세 이상이면 누구나 지원 가능합니다. 가사 서비스 경험이 있으면 더 좋지만, 없어도 기본 교육을 통해 활동할 수 있습니다.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>수입은 어떻게 계산되나요?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        서비스 수수료 20%를 제외한 80%가 파트너님께 지급됩니다. 주 단위로 정산되며, 활동량에 따라 월 300만원 이상도 가능합니다.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>서비스 예약은 어떻게 받나요?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        파트너 앱을 통해 활동 가능 시간을 설정하면, 그에 맞는 서비스 요청이 들어옵니다. 원하는 서비스를 선택하여 수락하면 됩니다.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>교육은 어떻게 진행되나요?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        기본 교육은 온라인과 오프라인으로 진행됩니다. 서비스 품질 향상을 위한 추가 교육도 정기적으로 제공됩니다.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>보험이나 안전 장치가 있나요?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        파트너님의 안전을 위해 상해보험을 제공하고 있으며, 서비스 전 고객 정보를 확인하여 안전한 환경에서 일할 수 있도록 지원합니다.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>클린홈</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">회사 소개</a></li>
+                        <li><a href="#">블로그</a></li>
+                        <li><a href="#">채용 정보</a></li>
+                        <li><a href="#">보도자료</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>서비스</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">일반 청소</a></li>
+                        <li><a href="#">이사 청소</a></li>
+                        <li><a href="#">정기 청소</a></li>
+                        <li><a href="#">가전 청소</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>고객 지원</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">자주 묻는 질문</a></li>
+                        <li><a href="#">이용 가이드</a></li>
+                        <li><a href="#">고객센터</a></li>
+                        <li><a href="#">파트너 지원</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>문의하기</h3>
+                    <ul class="footer-links">
+                        <li>이메일: support@cleanhome.kr</li>
+                        <li>전화: 1544-0000</li>
+                        <li>운영시간: 평일 10:00 - 18:00</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 클린홈. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ 토글 기능
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const isOpen = answer.style.display === 'block';
+                
+                answer.style.display = isOpen ? 'none' : 'block';
+                question.querySelector('span:last-child').textContent = isOpen ? '+' : '-';
+            });
+        });
+
+        // 초기 상태에서는 답변 숨기기
+        document.querySelectorAll('.faq-answer').forEach(answer => {
+            answer.style.display = 'none';
+        });
+
+        // 폼 제출 처리
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('지원서가 성공적으로 제출되었습니다. 검토 후 연락드리겠습니다.');
+        });
+    </script>
+</body>
+</html>
