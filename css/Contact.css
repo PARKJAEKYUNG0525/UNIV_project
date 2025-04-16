@@ -58,6 +58,13 @@ textarea {
 .radio-option input {
     margin-right: 8px;
 }
+.radio-option label {
+    display: flex;
+    align-items: center;
+    line-height: 1;
+    margin-bottom: 0;
+}
+
 .notice {
     background-color: #f8f9fa;
     padding: 15px;
@@ -74,6 +81,13 @@ textarea {
 .privacy-check input {
     margin-right: 10px;
 }
+.privacy-check label {
+    display: flex;
+    align-items: center;
+    line-height: 1;
+    margin-bottom: 0;
+}
+
 .submit-btn {
     display: block;
     width: 100%;
