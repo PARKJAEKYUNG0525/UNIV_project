@@ -132,6 +132,9 @@ nav ul li a:hover {
 .sidebar-menu li:last-child a {
     color: #f44336; /* 로그아웃은 빨간색 계열로 강조 */
 }
+.sidebar-menu li:last-child a:hover{
+    background-color: #f0f7ff;
+}
 .content {
     flex: 1;
     background-color: white;
