@@ -97,6 +97,35 @@ nav ul li a:hover {
     color: #3498db;
 }
 
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        padding: 15px;
+    }
+    
+    .logo {
+        margin-bottom: 15px;
+    }
+    
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    nav ul li {
+        margin: 5px 10px;
+    }
+    
+    .features {
+        grid-template-columns: 1fr;
+    }
+    
+    .overlay-text {
+        font-size: 2rem;
+    }
+}
+
 /* 슬라이더 스타일 */
 #slider {
     position: relative;
@@ -355,34 +384,6 @@ h2 {
     margin: 14px;
 }
 
-/* 반응형 디자인 */
-@media (max-width: 768px) {
-    header {
-        flex-direction: column;
-        padding: 15px;
-    }
-    
-    .logo {
-        margin-bottom: 15px;
-    }
-    
-    nav ul {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-    
-    nav ul li {
-        margin: 5px 10px;
-    }
-    
-    .features {
-        grid-template-columns: 1fr;
-    }
-    
-    .overlay-text {
-        font-size: 2rem;
-    }
-}
 
 /* 사용자 메뉴 스타일 */
 .user-menu {
