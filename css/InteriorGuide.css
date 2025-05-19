@@ -2,7 +2,7 @@
 /* 메인 배너 */
 .interior-banner {
     height: 70vh;
-    background-image: url('img/interior-banner.jpg');
+    background-image: url('img/ai_interior.png');
     background-size: cover;
     background-position: center;
     position: relative;
