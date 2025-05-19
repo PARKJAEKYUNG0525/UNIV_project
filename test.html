@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CLEAN4U - AI 인테리어 가이드</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --main-color: #A4D8F4;
+      --accent-color: #3a3a3a;
+      --bg-light: #f9f9f9;
+      --text-dark: #222;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: var(--main-color);
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+    }
+
+    header p {
+      font-size: 1.2rem;
+    }
+
+    .section {
+      padding: 60px 20px;
+      max-width: 960px;
+      margin: auto;
+    }
+
+    .section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .step {
+      background: white;
+      padding: 20px;
+      border-radius: 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .step h3 {
+      color: var(--main-color);
+      margin-bottom: 10px;
+    }
+
+    .cta {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .cta button {
+      background: var(--main-color);
+      color: white;
+      border: none;
+      padding: 16px 32px;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .cta button:hover {
+      background-color: #82c4e7;
+    }
+
+    footer {
+      background: #eee;
+      padding: 20px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    @media (min-width: 768px) {
+      .steps {
+        flex-direction: row;
+      }
+
+      .step {
+        flex: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>청소는 시작일 뿐이에요</h1>
+    <p>AI 인테리어 가이드로 내 공간을 더 예쁘게 완성해보세요</p>
+  </header>
+
+  <section class="section">
+    <h2>서비스 이용 흐름</h2>
+    <div class="steps">
+      <div class="step">
+        <h3>1. 청소 서비스 예약</h3>
+        <p>전문가가 방문해 공간을 깨끗하게 정돈해드려요.</p>
+      </div>
+      <div class="step">
+        <h3>2. 사진 업로드</h3>
+        <p>청소 후 공간을 사진으로 찍어 업로드하세요.</p>
+      </div>
+      <div class="step">
+        <h3>3. AI 인테리어 제안</h3>
+        <p>AI가 당신의 공간을 더욱 아름답게 만드는 배치 아이디어를 제안합니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>셀프 인테리어, 어렵지 않아요</h2>
+    <p style="text-align:center; max-width: 600px; margin: 0 auto 40px;">
+      전문 디자이너가 아니어도 괜찮아요.  
+      AI가 내 공간에 꼭 맞는 셀프 배치 팁을 알려드립니다.  
+      정돈된 공간에서 작은 변화를 시도해보세요.
+    </p>
+    <div class="cta">
+      <button onclick="alert('사진 업로드 기능은 준비 중입니다!')">AI 인테리어 제안 받기</button>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 CLEAN4U | 모든 공간은 변화할 수 있어요.
+  </footer>
+</body>
+</html>
