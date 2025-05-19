@@ -275,7 +275,9 @@ h2 {
 }
 
 #services {
-    padding: 60px 0;
+    /* padding: 60px 0; */
+    padding-top: 60px;
+    padding-bottom: 90px;
     text-align: center;
     background-color: #f7f7f8;
 }
@@ -323,7 +325,7 @@ h2 {
 .button-container {
     display: flex; /* Flexbox 사용 */
     justify-content: center; /* 수평 가운데 정렬 */
-    margin-top: -50px;
+    margin-top: -65px;
     
 }
 
