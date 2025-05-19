@@ -275,12 +275,15 @@ nav ul li a:hover {
 
 .interior-guide-content {
     display: flex;
-    align-items: center;
+    align-items: stretch;
     gap: 40px;
 }
 
 .interior-guide-image {
-    flex: 1;
+    flex: 0 0 30%;
+    display: flex;              /* 내부에서 중앙 정렬하기 위해 flex 사용 */
+    justify-content: center;    /* 수평 가운데 */
+    align-items: center;        /* 수직 가운데 */
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -290,11 +293,6 @@ nav ul li a:hover {
     width: 100%;
     height: auto;
     display: block;
-    transition: transform 0.3s;
-}
-
-.interior-guide-image:hover img {
-    transform: scale(1.05);
 }
 
 .interior-guide-text {
@@ -346,7 +344,6 @@ h2 {
     padding-bottom: 90px;
     text-align: center;
     background-color: #f7f7f8;
-    border-radius: 10px;
 }
 
 
@@ -396,7 +393,7 @@ h2 {
     
 }
 
-#reservationButton {
+/* #reservationButton {
     margin-bottom: 20px;
     background-color: #3498db;
     color: white;
@@ -405,10 +402,13 @@ h2 {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s, border-color 0.3s;
-}
+} */
 
-#reservationButton {
-    background-color: #2980b9;
+.reservation-btn {
+    font-size: 1.1rem;
+    padding: 10px 25px;
+    margin: 0;
+
 }
 
 /* 리뷰 섹션 스타일 */
