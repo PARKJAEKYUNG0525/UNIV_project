@@ -1,36 +1,38 @@
 document.querySelector('.login-form').addEventListener('submit', function(e) {
     e.preventDefault();
-    
-    // 폼 데이터 가져오기
+
     const email = this.querySelector('input[type="text"]').value;
     const password = this.querySelector('input[type="password"]').value;
-    const rememberMe = document.getElementById('remember').checked;
 
-    // 간단한 유효성 검사
     if (!email || !password) {
         alert('이메일과 비밀번호를 모두 입력해주세요.');
         return;
     }
 
-    // 실제 서비스에서는 서버로 로그인 요청을 보내야 합니다.
-    // 여기서는 로컬 스토리지를 사용한 간단한 로그인 구현
-    
-    // 로컬 스토리지에 사용자 정보 저장 (개발용)
-    // 실제 서비스에서는 서버에서 인증 후 토큰을 발급받아 저장해야 합니다.
-    const userData = {
-        email: email,
-        name: email.split('@')[0], // 이메일에서 아이디 부분만 추출하여 이름으로 사용
-        isLoggedIn: true,
-        loginTime: new Date().toISOString(),
-        loginMethod: 'email'
-    };
-    
-    // 로컬 스토리지에 데이터 저장
-    localStorage.setItem('userData', JSON.stringify(userData));
-    
-    // 홈페이지로 리다이렉트
-    alert('로그인되었습니다.');
-    window.location.href = 'index.html';
+
+// 서버로 로그인 요청
+    fetch('login.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: `email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // 로그인 성공 시에만 로컬 스토리지 저장
+            localStorage.setItem('userData', JSON.stringify(data.userData));
+            alert('로그인되었습니다.');
+            window.location.href = 'index.html';
+        } else {
+            alert(data.message || '로그인 실패: 이메일 또는 비밀번호가 틀렸습니다.');
+        }
+    })
+    .catch(error => {
+        console.error('로그인 오류:', error);
+        alert('서버 오류가 발생했습니다.');
+    });
 });
 
 // 비밀번호 찾기 기능 (현재는 더미 기능)

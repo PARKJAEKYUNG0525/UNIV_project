@@ -42,47 +42,50 @@
             <hr>
         </div>
         
-        <form class="signup-form">
-            <div class="section-title">기본 정보</div>
-            
-            <div class="input-group">
-                <input type="email" placeholder="이메일" required>
-                <div class="validation-message">유효한 이메일 주소를 입력해주세요.</div>
-            </div>
-            
-            <div class="input-group">
-                <input type="password" placeholder="비밀번호" required>
-                <div class="validation-message">8자 이상, 영문/숫자/특수문자 포함 비밀번호를 설정해주세요.</div>
-            </div>
-            
-            <div class="input-group">
-                <input type="password" placeholder="비밀번호 확인" required>
-                <div class="validation-message">비밀번호가 일치하지 않습니다.</div>
-            </div>
-            
-            <div class="input-group">
-                <input type="text" placeholder="이름" required>
-            </div>
-            
-            <div class="input-group">
-                <input type="tel" placeholder="휴대폰 번호 (- 없이 입력)" required>
-                <div class="validation-message">유효한 휴대폰 번호를 입력해주세요.</div>
-            </div>
-            
-            <div class="section-title">주소 정보</div>
-            
-            <div class="address-input">
-                <div class="zipcode-group">
-                    <input type="text" id="zipcode" placeholder="우편번호" required>
-                    <button type="button" class="zipcode-btn" id="search-zipcode">우편번호 찾기</button>
-                </div>
-                
-                <input type="text" id="address" placeholder="기본 주소"  required>
-                
-                <div class="address-detail">
-                    <input type="text" id="addressDetail" placeholder="상세 주소" required>
-                </div>
-            </div>
+
+<form class="signup-form" action="register_process.php" method="POST">
+    <div class="section-title">기본 정보</div>
+    
+    <div class="input-group">
+        <input type="email" name="email" placeholder="이메일" required>
+        <div class="validation-message">유효한 이메일 주소를 입력해주세요.</div>
+    </div>
+    
+    <div class="input-group">
+        <input type="password" name="password" placeholder="비밀번호" required>
+        <div class="validation-message">8자 이상, 영문/숫자/특수문자 포함 비밀번호를 설정해주세요.</div>
+    </div>
+    
+    <div class="input-group">
+        <input type="password" name="confirm_password" placeholder="비밀번호 확인" required>
+        <div class="validation-message">비밀번호가 일치하지 않습니다.</div>
+    </div>
+    
+    <div class="input-group">
+        <input type="text" name="name" placeholder="이름" required>
+    </div>
+    
+    <div class="input-group">
+        <input type="tel" name="phone" placeholder="휴대폰 번호 (- 없이 입력)" required>
+        <div class="validation-message">유효한 휴대폰 번호를 입력해주세요.</div>
+    </div>
+    
+    <div class="section-title">주소 정보</div>
+    
+    <div class="address-input">
+        <div class="zipcode-group">
+            <input type="text" id="zipcode" name="zipcode" placeholder="우편번호" required>
+            <button type="button" class="zipcode-btn" id="search-zipcode">우편번호 찾기</button>
+        </div>
+        
+        <input type="text" id="address" name="address" placeholder="기본 주소" required>
+        
+        <div class="address-detail">
+            <input type="text" id="addressDetail" name="addressDetail" placeholder="상세 주소" required>
+        </div>
+    </div>
+    
+    <!-- 이하 동일 -->
             
             <div class="terms-container">
                 <div class="terms-item">
