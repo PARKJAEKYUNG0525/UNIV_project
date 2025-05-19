@@ -172,8 +172,6 @@ nav ul li a:hover {
 
 }
 
-
-
 /* 버튼 스타일 */
 .btn {
     display: inline-block;
@@ -197,7 +195,8 @@ nav ul li a:hover {
 
 /* 섹션 스타일 */
 .section {
-    padding: 80px 0;
+    /* padding: 60px 0; */
+    padding-top: 60px;
     text-align: center;
 }
 
@@ -257,12 +256,78 @@ nav ul li a:hover {
     flex-shrink: 0; /* 아이콘이 줄어들지 않도록 설정 */
 }
 
-
-
 .feature h3 {
     font-size: 1.3rem;
     margin-bottom: 10px;
     color: #333;
+}
+
+/* AI 인테리어 가이드 섹션 스타일 */
+#ai-interior-guide {
+    background-color: #f9f9f9;
+    padding: 80px 0;
+}
+
+.interior-guide-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.interior-guide-content {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.interior-guide-image {
+    flex: 1;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.interior-guide-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s;
+}
+
+.interior-guide-image:hover img {
+    transform: scale(1.05);
+}
+
+.interior-guide-text {
+    flex: 1;
+    text-align: left;
+}
+
+.interior-guide-text h3 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.interior-guide-text p {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 25px;
+    line-height: 1.7;
+}
+
+.interior-guide-btn {
+    font-size: 1.1rem;
+    padding: 10px 25px;
+}
+
+@media (max-width: 768px) {
+    .interior-guide-content {
+        flex-direction: column;
+    }
+    
+    .interior-guide-text {
+        text-align: center;
+    }
 }
 
 /* 제공서비스 섹션 스타일 */
@@ -272,6 +337,8 @@ h2 {
     bottom : 40px;
     color: #333;
     text-align: center;
+    padding-top: 60px;
+    padding-bottom: 20px;
 }
 
 #services {
@@ -344,8 +411,6 @@ h2 {
     background-color: #2980b9;
 }
 
-
-
 /* 리뷰 섹션 스타일 */
 .reviews {
     display: grid;
@@ -369,8 +434,6 @@ h2 {
     color: #555;
     line-height: 1.8;
 }
-
-
 
 /* 푸터 스타일 */
 .footer {
