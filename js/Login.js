@@ -11,7 +11,7 @@ document.querySelector('.login-form').addEventListener('submit', function(e) {
 
 
 // 서버로 로그인 요청
-    fetch('http://localhost/UNIV_project/login.php', {
+    fetch('https://clean4u.r-e.kr/UNIV_project/login.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
