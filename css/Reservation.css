@@ -656,6 +656,11 @@ h1, h2 {
     pointer-events: none;
     color: #666;
 }
+#regular-options .icon-select {
+    right: 10px;
+    top: 50%; /* 기본값은 부모 요소의 50% 위치 */
+    transform: translateY(-50%);
+}
 
 /* 체크박스 스타일링 */
 .checkbox-group {
@@ -857,6 +862,17 @@ h1, h2 {
 #regular-options.visible, #area-options.visible {
     opacity: 1;
     max-height: 500px;
+}
+
+/* 정기 청소 옵션 좌우 배치 */
+#regular-options {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+#regular-options select {
+    flex: 1;
 }
 
 /* 구역 선택 체크박스 그룹 스타일 보완 */
