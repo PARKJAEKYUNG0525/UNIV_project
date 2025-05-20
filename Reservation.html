@@ -23,7 +23,7 @@
                 <li><a href="Index.html#reviews">고객 리뷰</a></li>
                 <li><a href="InteriorGuide.html" id="interiorGuideLink">AI 가이드</a></li>
                 <li><a href="Contact.html">문의하기</a></li>
-                <li><a href="Login.html">로그인</a></li>
+                <li><a href="login.html">로그인</a></li>
             </ul>
         </nav>
     </header>
@@ -220,9 +220,19 @@
                         <label for="cleaning-interval">청소 간격 선택</label>
                         <select id="cleaning-interval" name="cleaning-interval">
                             <option value="" disabled selected>간격 선택</option>
-                            <option value="weekly">1주</option>
-                            <option value="biweekly">2주</option>
-                            <option value="monthly">한 달</option>
+                            <option value="weekly">매일</option>
+                            <option value="biweekly">매주</option>
+                            <option value="monthly">매달</option>
+                        </select>
+                        <select id="cleaning-interval" name="cleaning-interval">
+                            <option value="" disabled selected>요일 선택</option>
+                            <option value="mon">월요일</option>
+                            <option value="tue">화요일</option>
+                            <option value="wen">수요일</option>
+                            <option value="thu">목요일</option>
+                            <option value="fri">금요일</option>
+                            <option value="sat">토요일</option>
+                            <option value="sun">일요일</option>
                         </select>
                         <div class="icon-select"><i class="fas fa-chevron-down"></i></div>
                     </div>
