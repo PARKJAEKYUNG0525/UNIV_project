@@ -19,5 +19,5 @@ if ($conn->connect_error) {
 $conn->set_charset("utf8mb4");
 
 // 연결 성공 메시지
-echo "데이터베이스 연결 성공!";
+//echo "데이터베이스 연결 성공!";
 ?>
