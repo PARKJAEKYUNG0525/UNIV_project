@@ -217,24 +217,31 @@
 
                     <!-- 정기 청소 선택 시 표시될 간격 선택 옵션 -->
                     <div class="form-group" id="regular-options" style="display: none;">
-                        <label for="cleaning-interval">청소 간격 선택</label>
-                        <select id="cleaning-interval" name="cleaning-interval">
-                            <option value="" disabled selected>간격 선택</option>
-                            <option value="weekly">매일</option>
-                            <option value="biweekly">매주</option>
-                            <option value="monthly">매달</option>
-                        </select>
-                        <select id="cleaning-interval" name="cleaning-interval">
-                            <option value="" disabled selected>요일 선택</option>
-                            <option value="mon">월요일</option>
-                            <option value="tue">화요일</option>
-                            <option value="wen">수요일</option>
-                            <option value="thu">목요일</option>
-                            <option value="fri">금요일</option>
-                            <option value="sat">토요일</option>
-                            <option value="sun">일요일</option>
-                        </select>
-                        <div class="icon-select"><i class="fas fa-chevron-down"></i></div>
+                        <label for="cleaning-interval">청소 간격 및 요일 선택</label>
+                        <div style="display: flex; gap: 20px; width: 100%;">
+                            <div style="flex: 1; position: relative;">
+                                <select id="cleaning-interval" name="cleaning-interval">
+                                    <option value="" disabled selected>간격 선택</option>
+                                    <option value="weekly">매일</option>
+                                    <option value="biweekly">매주</option>
+                                    <option value="monthly">매달</option>
+                                </select>
+                                <div class="icon-select"><i class="fas fa-chevron-down"></i></div>
+                            </div>
+                            <div style="flex: 1; position: relative;">
+                                <select id="cleaning-day" name="cleaning-day">
+                                    <option value="" disabled selected>요일 선택</option>
+                                    <option value="mon">월요일</option>
+                                    <option value="tue">화요일</option>
+                                    <option value="wen">수요일</option>
+                                    <option value="thu">목요일</option>
+                                    <option value="fri">금요일</option>
+                                    <option value="sat">토요일</option>
+                                    <option value="sun">일요일</option>
+                                </select>
+                                <div class="icon-select"><i class="fas fa-chevron-down"></i></div>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- 구역 청소 선택 시 표시될 구역 선택 옵션 -->
