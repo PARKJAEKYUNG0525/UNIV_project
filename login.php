@@ -1,5 +1,7 @@
-<?php
-require_once 'config.php';
+<!-- <?php
+// login.php
+
+require_once 'config.php'; // DB 연결 설정 파일 포함
 
 header('Content-Type: application/json');
 
@@ -30,6 +32,4 @@ if ($user && password_verify($password, $user['password'])) {
     ]);
 } else {
     echo json_encode(['success' => false, 'message' => '이메일 또는 비밀번호가 틀렸습니다.']);
-}
-
-exit;
+} -->
