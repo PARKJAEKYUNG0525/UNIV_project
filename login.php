@@ -40,7 +40,23 @@ $result = $stmt->get_result();
 $user = $result->fetch_assoc();
 
 if ($user) {
-    if (password_verify($password, $user['password'])) {
+    // 로그인 검증 로직 수정
+    $login_success = false;
+    
+    // 비밀번호가 해시된 경우
+    if (str_starts_with($user['password'], '$2y$')) {
+        if (password_verify($password, $user['password'])) {
+            $login_success = true;
+        }
+    } 
+    // 비밀번호가 평문인 경우
+    else {
+        if ($password === $user['password']) {
+            $login_success = true;
+        }
+    }
+    
+    if ($login_success) {
         // 로그인 성공
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['email'] = $user['email'];
