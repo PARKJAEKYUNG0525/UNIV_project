@@ -1,15 +1,16 @@
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
-    header("Access-Control-Allow-Origin: *");  // 개발용, 운영시 특정 도메인으로 변경
+    header("Access-Control-Allow-Origin: *");  // 모든 도메인 허용 (개발용)
     header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
     header("Access-Control-Allow-Headers: Content-Type");
     exit(0);
 }
 
-header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Origin: *");  // 모든 도메인 허용 (개발용)
 header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type");
+
 session_start();
 require_once 'config.php';
 
